@@ -43,8 +43,29 @@ try {
     exit 1
 }
 
-# Additional script logic (e.g., running tests, building, etc.)
-# Add your commands here
+# Run unit tests
+try {
+    pytest
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Unit tests failed"
+        exit 1
+    }
+} catch {
+    Write-Error "Failed to run unit tests: $_"
+    exit 1
+}
+
+# Run code quality checks
+try {
+    flake8 .
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Code quality checks failed"
+        exit 1
+    }
+} catch {
+    Write-Error "Failed to run code quality checks: $_"
+    exit 1
+}
 
 # Add, commit, and push any changes to the repository
 try {
