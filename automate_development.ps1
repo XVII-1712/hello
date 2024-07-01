@@ -16,8 +16,14 @@ if (-Not (Test-Path -Path $venvPath)) {
     python -m venv $venvPath
 }
 
-# Activate the virtual environment (PowerShell syntax)
-& "$venvPath\Scripts\Activate.ps1"
+# Activate the virtual environment
+$activateScript = "$venvPath\Scripts\Activate.ps1"
+if (Test-Path $activateScript) {
+    & $activateScript
+} else {
+    Write-Host "Error: Activate.ps1 script not found in $venvPath\Scripts"
+    exit 1
+}
 
 # Install necessary packages if not already installed
 pip show qutip
@@ -45,7 +51,12 @@ try {
 
 # Run the QuTiP script
 $scriptPath = "$projectPath\complex_simulation.py"
-python $scriptPath
+if (Test-Path $scriptPath) {
+    python $scriptPath
+} else {
+    Write-Host "Error: QuTiP script not found at $scriptPath"
+    exit 1
+}
 
 # Add, commit, and push any changes back to version control
 git add .
