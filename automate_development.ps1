@@ -61,5 +61,9 @@ git add .
 git commit -m "Automated update: $(Get-Date)"
 git push origin main
 
+# Optionally run repository maintenance commands
+git prune
+git gc
+
 # Deactivate the virtual environment (optional)
 # & "$venvPath\Scripts\Deactivate"
