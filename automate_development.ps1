@@ -1,6 +1,6 @@
 # Define the project path and virtual environment path
 $projectPath = "C:\Users\mike\qlf_project\backend\backend"
-$venvPath = "$projectPath\qutip_env"
+$venvPath = "$projectPath\qlf_env"
 
 # Navigate to the project directory
 cd $projectPath
@@ -9,15 +9,6 @@ cd $projectPath
 if (-Not (Test-Path -Path ".git")) {
     git init
     git remote add origin https://github.com/XVII-1712/hello.git
-}
-
-# Create .gitattributes file if it doesn't exist
-$gitattributesPath = "$projectPath\.gitattributes"
-if (-Not (Test-Path -Path $gitattributesPath)) {
-    Set-Content -Path $gitattributesPath -Value "* text=auto`n*.py text`n*.txt text"
-    git add .gitattributes
-    git commit -m "Add .gitattributes to handle line endings"
-    git push origin main
 }
 
 # Create the virtual environment if it does not exist
@@ -64,6 +55,3 @@ git push origin main
 # Optionally run repository maintenance commands
 git prune
 git gc
-
-# Deactivate the virtual environment (optional)
-# & "$venvPath\Scripts\Deactivate"
