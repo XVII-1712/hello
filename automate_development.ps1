@@ -16,8 +16,8 @@ if (-Not (Test-Path -Path $venvPath)) {
     python -m venv $venvPath
 }
 
-# Activate the virtual environment
-& "$venvPath\Scripts\Activate"
+# Activate the virtual environment (PowerShell syntax)
+& "$venvPath\Scripts\Activate.ps1"
 
 # Install necessary packages if not already installed
 pip show qutip
