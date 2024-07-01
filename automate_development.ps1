@@ -1,6 +1,6 @@
 # Define the project path and virtual environment path
 $projectPath = "C:\Users\mike\qlf_project\backend\backend"
-$venvPath = "$projectPath\qlf_env"
+$venvPath = "$projectPath\qutip_env"
 
 # Navigate to the project directory
 cd $projectPath
