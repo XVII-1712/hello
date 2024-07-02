@@ -31,6 +31,4 @@ jobs:
     - name: Run tests
       run: |
         source venv/bin/activate
-        # Add your test command here
-        # Example:
         python -m unittest discover -s tests
